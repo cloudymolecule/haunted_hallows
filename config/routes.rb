@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+  root 'sessions#homepage', as: 'homepage'
+
   resources :comments
   resources :rooms
   resources :boards
   resources :bookings
   resources :guests
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :guests, only: [:show, :index] do
+    resources :rooms
+  end
+
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 end
