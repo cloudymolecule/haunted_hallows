@@ -1,11 +1,19 @@
 class RoomsController < ApplicationController
+    before_action :set_room, only: [:show, :edit, :update, :destroy]
+
     def index
+        if params[:guest_id]
+            @rooms = Guest.find(params[:guest_id]).rooms
+        else
+            @rooms = Room.all
+        end
     end
 
     def show
     end
 
     def new
+        @room = Room.new
     end
 
     def edit
@@ -19,4 +27,12 @@ class RoomsController < ApplicationController
 
     def destroy
     end
+
+    private
+
+    def set_room
+        @room = Room.find(params[:id])
+    end
+    
+
 end
