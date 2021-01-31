@@ -20,6 +20,7 @@ class RoomsController < ApplicationController
     end
 
     def create
+        byebug
     end
 
     def update
@@ -32,6 +33,10 @@ class RoomsController < ApplicationController
 
     def set_room
         @room = Room.find(params[:id])
+    end
+
+    def room_params
+        params.require(:room).permit(:haunting, :note, :do_not_disturb)
     end
     
 
