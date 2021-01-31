@@ -1,0 +1,31 @@
+<h1>Register as new Guest</h1>
+
+<%= form_for @guest do |f| %>
+
+    <%= f.label :username, "Username" %>
+    <%= f.text_field :username %></br>
+
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email %></br>
+
+    <%= f.label :age, "Age" %>
+    <%= f.text_field :age %></br>
+
+    <%= f.label :password, "Password (at least 8 characters long)" %>
+    <%= f.password_field :password %></br>
+
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= f.password_field :password_confirmation %></br>
+
+    <%= f.label :gender, "Gender" %></br>
+    <%= f.radio_button :gender, "Male" %> Male <br />
+    <%= f.radio_button :gender, "Female" %> Female <br />
+    <%= f.radio_button :gender, "Non-binary" %> Non-binary <br />
+    <%= f.radio_button :gender, "Other" %> Other <br />
+
+    <%= f.label :bio, "Say something about yourself" %></br>
+    <%= f.text_field :bio %></br></br>
+
+    <%= f.submit "Create Account" %>
+
+<% end %>
