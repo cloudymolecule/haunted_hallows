@@ -1,7 +1,23 @@
 <h1><%= @guest.username %></h1>
+Bio: <%= @guest.bio %></br>
+Age: <%= @guest.age %> ||
+Gender: <%= @guest.gender %>
 
 <h3> Current Bookings: </h3>
-<% @guest.bookings.each do |booking| %>
-    <%= link_to booking.name, booking_path(booking) %></br>
-<% end %></br>
+<ul>
+    <% @guest.bookings.each do |booking| %>
+        <li><%= link_to booking.name, booking_path(booking) %></li>
+    <% end %></br>
+</ul>
 
+<h3> Rooms </h3>
+<ul>
+    <% @guest.rooms.each do |room|
+        <li>
+            <%= link_to room.number, room_path(room) %>
+            Note: <%= room.note %> 
+        </li>
+    <% end %></br>
+</ul>
+
+<h3><%= link_to "Comments", "/comments/index" %></h3>

@@ -12,6 +12,7 @@
       <h1><%= current_user.username %> || Haunted Hallows Hotel</h1>
       <%= link_to "Book a Room", "/rooms/new" %> ||
       <%= link_to "Explore the Hotel", "/rooms" %> ||
+      <%= link_to "Control Panel", guest_path(current_user) %> ||
       <%= link_to "Log out", "/logout" %></br>
     <% end %>
     <%= yield %>    
