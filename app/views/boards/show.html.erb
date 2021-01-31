@@ -1,14 +1,14 @@
 <h1> <%= @board.title %> </h1>
 
-<%= link_to "Add a New Comment", new_board_comment_path %>
+<%= link_to "Add a New Comment", new_board_comment_path(@board) %>
 
 <% if @board.comments %>
     <ol>
         <% @board.comments.each do |comment| %>
-            Guest: <%= comment.guest_id %>
             <li>
-                <%= comment.entry %>
-            </li>
+                <h4><%= comment.entry %> </h4>
+                Guest: <%= comment.guest_id %>
+            </li></br>
         <% end %>
     </ol>
 <% end %>

@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     end
 
     def new
-        @comment = Comment.new(board_id: params[:board_id])
+        @comment = Comment.new(board_id: params[:board_id], guest_id: current_user.id)
     end
 
     def edit
@@ -20,7 +20,8 @@ class CommentsController < ApplicationController
     def create
         @comment = Comment.new(comment_params)
         if @comment.save
-            redirect_to board_path(@comment.board_id)
+            @board = Board.find(@comment.board_id)
+            redirect_to board_path(@board)
         else
             render :new
         end
