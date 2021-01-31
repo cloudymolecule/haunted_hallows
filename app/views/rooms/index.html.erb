@@ -1,0 +1,8 @@
+<h1>List of Rooms</h1>
+
+<% @rooms.each do |room| %>
+    <p>Room Number <%= link_to room.number, room %></p></br>
+    <p>Do Not Disturb? <%= room.do_not_disturb %></p></br>
+    <p> Note on Room Door: </p>
+    <%= room.note %></br></br>
+<% end %>
