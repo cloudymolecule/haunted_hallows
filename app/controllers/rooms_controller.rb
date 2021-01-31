@@ -14,16 +14,17 @@ class RoomsController < ApplicationController
 
     def new
         @room = Room.new
+        @room.bookings.build
     end
 
     def edit
     end
 
     def create
+        room = Room.create(room_params)
+        
         byebug
-        if @room = Room.new(room_params)
-            @booking = Booking.new()
-        end
+        redirect_to room_path(room)
     end
 
     def update
@@ -39,7 +40,7 @@ class RoomsController < ApplicationController
     end
 
     def room_params
-        params.require(:room).permit(:haunting, :note, :do_not_disturb)
+        params.require(:room).permit(:haunting, :note, :do_not_disturb, bookings_attributes: [:name] )
     end
     
 

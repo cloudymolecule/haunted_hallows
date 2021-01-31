@@ -11,6 +11,13 @@
     <%= f.label :do_not_disturb, "Private?:" %>
     <%= f.text_field :do_not_disturb %></br>
 
+    <%= f.fields_for :bookings do |booking| %>
+
+        <%= booking.label :name, "Booking Name:" %>
+        <%= booking.text_field :name %></br>
+     
+      <% end %>
+
     <%= f.submit "Book Room" %>
 
 <% end %>
