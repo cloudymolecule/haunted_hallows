@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
 
     validates :entry, presence: true
 
-    def guest_comments
-        @comments = Comment.where(guest_id: current_user.id)
+    def self.by_guest(guest)
+        where(guest_id: guest)
     end
 end

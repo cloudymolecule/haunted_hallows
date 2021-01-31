@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     skip_before_action :authorized, only: [:new, :create]
 
     def index
-        
+        @comments = Comment.by_guest(current_user.id)
     end
 
     def show

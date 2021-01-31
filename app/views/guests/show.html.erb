@@ -12,7 +12,7 @@ Gender: <%= @guest.gender %>
 
 <h3> Rooms </h3>
 <ul>
-    <% @guest.rooms.each do |room|
+    <% @guest.rooms.each do |room| %>
         <li>
             <%= link_to room.number, room_path(room) %>
             Note: <%= room.note %> 
@@ -20,4 +20,4 @@ Gender: <%= @guest.gender %>
     <% end %></br>
 </ul>
 
-<h3><%= link_to "Comments", "/comments/index" %></h3>
+<h3><%= link_to "Comments", "/comments" %></h3>
