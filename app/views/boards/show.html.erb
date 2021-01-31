@@ -1,0 +1,12 @@
+<h1> <%= @board.title %> </h1>
+
+<% if @board.comments %>
+    <ol>
+        <% @board.comments.each do |comment| %>
+            <li>
+                Guest: <%= comment.guest_id %>
+                <%= comment.entry %>
+            </li>
+        <% end %>
+    </ol>
+<% end %>

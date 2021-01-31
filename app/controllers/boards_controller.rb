@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+    before_action :set_board, only: [:show, :edit, :update, :destroy]
+
     def index
     end
 
@@ -18,5 +20,11 @@ class BoardsController < ApplicationController
     end
 
     def destroy
+    end
+
+    private
+
+    def set_board
+        @board = Board.find(params[:id])
     end
 end
