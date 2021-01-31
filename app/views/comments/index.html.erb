@@ -3,7 +3,7 @@
 <ol>
     <% @comments.each do |comment| %>
         <li>
-            <h4> Entry: <%= comment.entry %> </h4>
+            <h4> Comment: <%= comment.entry %> </h4>
             Created at: <%= comment.created_at %> ||
             Updated at: <%= comment.updated_at %></br>
             <%= link_to "Edit Comment", edit_comment_path(comment) %> ||
