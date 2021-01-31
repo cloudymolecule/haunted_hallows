@@ -4,7 +4,11 @@
   <title>Haunted Hallows Hotel</title>
 </head>
 <body>
-    <h1>Welcome to Haunted Hallows Hotel</h1>
+    <% if !current_user %>
+      <h1>Welcome to Haunted Hallows Hotel</h1>
+    <% else %>
+      <h1>Haunted Hallows Hotel</h1>
+    <% end %>
     <%= link_to "Log In", "/login" %> ||
     <%= link_to "Register", "/guests/new" %> ||
     <%= link_to "Book a Room", "/rooms/new" %> ||
