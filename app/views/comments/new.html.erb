@@ -6,6 +6,7 @@
 
     <%= f.label :entry, "Comment:" %>
     <%= f.text_field :entry %></br></br>
+    <%= f.hidden_field :board_id, :value => @comment.board_id %>
 
     <%= f.submit "Add Comment" %>
 <% end %>
