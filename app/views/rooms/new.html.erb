@@ -16,10 +16,17 @@
 
     <%= f.fields_for :bookings do |booking| %>
 
-        <%= booking.label :name, "Booking Name:" %>
+        <%= booking.label :name, "Name your Booking:" %>
         <%= booking.text_field :name %></br>
      
-      <% end %>
+    <% end %></br>
+
+    <%= f.fields_for :boards do |board| %>
+
+        <%= board.label :title, "Message Board Title:" %>
+        <%= board.text_field :title %></br>
+     
+    <% end %>
 
     <%= f.submit "Book Room" %>
 

@@ -10,11 +10,14 @@ class RoomsController < ApplicationController
     end
 
     def show
+        @board = @room.boards.first
+         
     end
 
     def new
         @room = Room.new
         @room.bookings.build
+        @room.boards.build
     end
 
     def edit
@@ -25,6 +28,8 @@ class RoomsController < ApplicationController
         @room.bookings.first.guest_id = current_user.id
         @room.number = room_number
         if @room.save
+            @room.boards.first.room_id = @room.id
+            @room.save
             redirect_to room_path(@room)
         else
             render :new
@@ -44,7 +49,7 @@ class RoomsController < ApplicationController
     end
 
     def room_params
-        params.require(:room).permit(:haunting, :note, :do_not_disturb, bookings_attributes: [:name] )
+        params.require(:room).permit(:haunting, :note, :do_not_disturb, bookings_attributes: [:name], boards_attributes: [:title] )
     end
 
     def room_number

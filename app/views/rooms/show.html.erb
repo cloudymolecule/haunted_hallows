@@ -1,6 +1,10 @@
-<p>Room Number <%= @room.number %></p></br>
-<p>Do Not Disturb? <%= @room.do_not_disturb %></p></br>
+</br>
+Room Number <%= @room.number %> || 
+Do Not Disturb? <%= @room.do_not_disturb %></br>
 <p> Note on Room Door: </p>
 <%= @room.note %></br></br>
 <p> Room Haunting: </p>
 <%= @room.haunting %></br></br>
+
+
+<%= link_to "Message Board", board_path(@board) %>
