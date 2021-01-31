@@ -1,0 +1,11 @@
+<%= render partial: 'layouts/errors', locals: { object: @comment } %>
+
+<h1> Add a New Comment </h1>
+
+<%= form_for @comment do |f| %>
+
+    <%= f.label :entry, "Comment:" %>
+    <%= f.text_field :entry %></br></br>
+
+    <%= f.submit "Add Comment" %>
+<% end %>
