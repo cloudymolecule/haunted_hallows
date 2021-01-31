@@ -12,7 +12,7 @@
                 Updated at: <%= comment.updated_at %></br>
                 <% if current_user.id == comment.guest_id %>
                     <%= link_to "Edit Comment", edit_comment_path(comment) %> ||
-                    <%= link_to "Delete Comment", comment_path(comment), method: 'delete' %>
+                    <%= link_to "Delete Comment", comment_path(comment), method: 'DELETE' %>
                 <% end %>
             </li></br>
         <% end %>

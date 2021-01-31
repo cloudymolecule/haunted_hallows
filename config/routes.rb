@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
   root 'sessions#homepage', as: 'homepage'
-
-  resources :comments
-  resources :rooms
+  
   resources :boards
   resources :bookings
   resources :guests
 
   resources :guests, only: [:show, :index, :new] do
-    resources :rooms
+    resources :rooms, shallow: true
   end
 
+  resources :rooms
+
   resources :boards, only: [:show, :index, :new] do
-    resources :comments
+    resources :comments, shallow: true
   end
+
+  resources :comments
 
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'

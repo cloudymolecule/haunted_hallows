@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     end
 
     def edit
-        
+
     end
 
     def create
@@ -29,9 +29,18 @@ class CommentsController < ApplicationController
     end
 
     def update
+        if @comment.save
+            @board = Board.find(@comment.board_id)
+            redirect_to board_path(@board)
+        else
+            render :new
+        end
     end
 
     def destroy
+        board = Board.find(@comment.board_id)
+        @comment.destroy
+        redirect_to board_path(board)
     end
 
     private
