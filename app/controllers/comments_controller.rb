@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
+    before_action :set_comment, only: [:show, :edit, :update, :destroy]
+    skip_before_action :authorized, only: [:new, :create]
+
     def index
+        
     end
 
     def show
@@ -18,5 +22,11 @@ class CommentsController < ApplicationController
     end
 
     def destroy
+    end
+
+    private
+
+    def set_comment
+        @comment = Comment.find(params[:id])
     end
 end
