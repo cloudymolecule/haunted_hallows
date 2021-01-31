@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
     end
 
     def show
+        @room = Room.find(@booking.room_id)
     end
 
     def new
