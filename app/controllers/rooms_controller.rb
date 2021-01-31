@@ -21,9 +21,9 @@ class RoomsController < ApplicationController
     end
 
     def create
-        room = Room.create(room_params)
-        
-        byebug
+        room = Room.new(room_params)
+        room.bookings.first.guest_id = current_user.id
+        room.save
         redirect_to room_path(room)
     end
 
