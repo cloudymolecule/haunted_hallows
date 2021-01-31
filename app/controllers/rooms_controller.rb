@@ -21,11 +21,14 @@ class RoomsController < ApplicationController
     end
 
     def create
-        room = Room.new(room_params)
-        room.bookings.first.guest_id = current_user.id
-        room.number = room_number
-        room.save
-        redirect_to room_path(room)
+        @room = Room.new(room_params)
+        @room.bookings.first.guest_id = current_user.id
+        @room.number = room_number
+        if @room.save
+            redirect_to room_path(@room)
+        else
+            render :new
+        end
     end
 
     def update
