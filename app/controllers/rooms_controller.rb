@@ -23,6 +23,7 @@ class RoomsController < ApplicationController
     def create
         room = Room.new(room_params)
         room.bookings.first.guest_id = current_user.id
+        room.number = room_number
         room.save
         redirect_to room_path(room)
     end
@@ -41,6 +42,25 @@ class RoomsController < ApplicationController
 
     def room_params
         params.require(:room).permit(:haunting, :note, :do_not_disturb, bookings_attributes: [:name] )
+    end
+
+    def room_number
+        number = 100
+        r_n = []
+        Room.all.each do |r|
+            if r.number != nil
+                r_n << r.number
+            end
+        end
+        r_n.sort!
+        byebug
+        r_n.each do |n|
+            if n != number
+                return number
+            else
+                number = number + 1
+            end
+        end
     end
     
 
