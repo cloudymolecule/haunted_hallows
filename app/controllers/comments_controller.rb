@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     end
 
     def new
-        @comment = Comment.new
+        @comment = Comment.new(board_id: params[:board_id], guest_id: current_user.id)
     end
 
     def edit
@@ -30,5 +30,9 @@ class CommentsController < ApplicationController
 
     def set_comment
         @comment = Comment.find(params[:id])
+    end
+
+    def comments_params
+        params.require(:comments).permit(:board_id, :guest_id, :entry)
     end
 end

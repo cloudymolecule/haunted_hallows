@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'sessions#homepage', as: 'homepage'
 
-  # resources :comments
+  resources :comments
   resources :rooms
   resources :boards
   resources :bookings
