@@ -1,0 +1,16 @@
+<h1>Book a Room</h1>
+
+<%= form_for @room do |f| %>
+
+    <%= f.label :note, "Front Door Note:" %>
+    <%= f.text_field :note %></br>
+
+    <%= f.label :haunting, "Haunting inside:" %>
+    <%= f.text_field :haunting %></br>
+
+    <%= f.label :do_not_disturb, "Private?:" %>
+    <%= f.text_field :do_not_disturb %></br>
+
+    <%= f.submit "Book Room" %>
+
+<% end %>
