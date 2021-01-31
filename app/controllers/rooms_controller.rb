@@ -21,6 +21,9 @@ class RoomsController < ApplicationController
 
     def create
         byebug
+        if @room = Room.new(room_params)
+            @booking = Booking.new()
+        end
     end
 
     def update
