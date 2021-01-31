@@ -8,8 +8,9 @@
     <%= f.label :haunting, "Haunting inside:" %>
     <%= f.text_field :haunting %></br>
 
-    <%= f.label :do_not_disturb, "Private?:" %>
-    <%= f.text_field :do_not_disturb %></br>
+    <%= f.label :do_not_disturb, "Private?" %></br>
+    <%= f.radio_button :do_not_disturb, true %> Yes <br />
+    <%= f.radio_button :do_not_disturb, false , checked: true %> No <br />
 
     <%= f.fields_for :bookings do |booking| %>
 

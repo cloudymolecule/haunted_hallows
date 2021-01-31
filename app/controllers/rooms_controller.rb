@@ -53,7 +53,6 @@ class RoomsController < ApplicationController
             end
         end
         r_n.sort!
-        byebug
         r_n.each do |n|
             if n != number
                 return number
