@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
     end
 
     def update
-        if @comment.save
+        if @comment.update(comment_params)
             @board = Board.find(@comment.board_id)
             redirect_to board_path(@board)
         else
@@ -38,7 +38,6 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        byebug
         board = Board.find(@comment.board_id)
         @comment.destroy
         redirect_to board_path(board)
