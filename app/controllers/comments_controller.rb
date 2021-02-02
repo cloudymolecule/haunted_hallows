@@ -38,6 +38,7 @@ class CommentsController < ApplicationController
     end
 
     def destroy
+        byebug
         board = Board.find(@comment.board_id)
         @comment.destroy
         redirect_to board_path(board)
