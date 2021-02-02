@@ -15,6 +15,10 @@ class SessionsController < ApplicationController
         end
     end
 
+    def omniauth
+        byebug
+    end
+
     def destroy
         session.delete :guest_id
         redirect_to login_path

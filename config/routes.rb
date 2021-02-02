@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'sessions#homepage', as: 'homepage'
   
+  # match '/auth/:provider/callback', to: 'sessions#omniauth', via: [:get, :post]
+  # get "/auth/:provider/callback" => "sessions#omniauth"
+  get "/auth/:provider/callback", to: 'sessions#omniauth'
+
   resources :boards
   resources :bookings
   resources :guests
@@ -23,6 +27,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  get '/auth/:provider/callback', to: 'sessions#create'
+
 
 end
