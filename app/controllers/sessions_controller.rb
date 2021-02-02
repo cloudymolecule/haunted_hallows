@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorized, only: [:new, :create, :homepage]
+    skip_before_action :authorized, only: [:new, :create, :homepage, :omniauth]
 
     def new
         @guest = Guest.new
@@ -16,7 +16,13 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        byebug
+        @guest = Guest.find_or_create_by(uid: auth['uid']) do |g|
+            g.username = auth['info']['name']
+            g.email = auth['info']['email']
+        end
+        @guest.save
+        session[:guest_id] = @guest.id
+        redirect_to guest_path(@guest)
     end
 
     def destroy
@@ -30,7 +36,7 @@ class SessionsController < ApplicationController
     private
 
     def sessions_params
-        params.require(:guest).permit(:username, :password, :password_confirmation)
+        params.require(:guest).permit(:id, :uid, :email, :username, :password, :password_confirmation)
     end
 
     def auth

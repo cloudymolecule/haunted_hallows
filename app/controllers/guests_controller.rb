@@ -44,7 +44,8 @@ class GuestsController < ApplicationController
             :email, 
             :bio,
             :age, 
-            :gender, 
+            :gender,
+            :uid 
             :password, 
             :password_confirmation)
     end

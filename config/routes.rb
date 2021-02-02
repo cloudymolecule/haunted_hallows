@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'sessions#homepage', as: 'homepage'
   
-  # match '/auth/:provider/callback', to: 'sessions#omniauth', via: [:get, :post]
-  # get "/auth/:provider/callback" => "sessions#omniauth"
   get "/auth/:provider/callback", to: 'sessions#omniauth'
 
   resources :boards
