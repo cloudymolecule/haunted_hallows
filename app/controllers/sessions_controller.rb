@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
             g.username = auth['info']['name']
             g.email = auth['info']['email']
         end
-        @guest.save
+        @guest.save(validate: false)
         session[:guest_id] = @guest.id
         redirect_to guest_path(@guest)
     end
