@@ -1,9 +1,11 @@
+<%= render partial: 'layouts/errors', locals: { object: @guest } %>
+
 <h1>Login Here!</h1>
 
 <%= form_for @guest, url: login_path do |f| %>
 
-    <%= f.label :username, "Username:" %>
-    <%= f.text_field :username %>
+    <%= f.label :email, "Email:" %>
+    <%= f.text_field :email %>
 
     <%= f.label :password, "Password" %>
     <%= f.password_field :password %></br>

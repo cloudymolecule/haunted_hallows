@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @guest = Guest.find_by(username: sessions_params[:username])
+        @guest = Guest.find_by(email: sessions_params[:email])
         if @guest && @guest.authenticate(sessions_params[:password])
             session[:guest_id] = @guest.id
             redirect_to guest_path(@guest)
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        @guest = Guest.find_or_create_by(uid: auth['uid']) do |g|
+        @guest = Guest.find_or_initialize_by(uid: auth['uid']) do |g|
             g.username = auth['info']['name']
             g.email = auth['info']['email']
         end
