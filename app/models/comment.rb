@@ -7,4 +7,5 @@ class Comment < ApplicationRecord
     def self.by_guest(guest)
         where(guest_id: guest)
     end
+    
 end

@@ -8,4 +8,11 @@ class Room < ApplicationRecord
 
     accepts_nested_attributes_for :bookings
     accepts_nested_attributes_for :boards
+
+    scope :ordered_by_number, -> { order(number: :asc) }
+
+    def self.ordered_by_number
+        self.order(:number).order(number: :desc)
+    end
+
 end
