@@ -27,6 +27,11 @@ class GuestsController < ApplicationController
     end
 
     def update
+        if @guest.update(guest_params)
+            redirect_to @guest
+        else
+            render :edit
+        end
     end
 
     def destroy

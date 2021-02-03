@@ -1,5 +1,7 @@
 <h1><%= @guest.username %></h1>
-<h3> <%= link_to 'Edit your Account', edit_guest_path(@guest) %> </h3>
+<% if @guest.email != nil && @guest.password_digest != nil %>
+    <h3> <%= link_to 'Edit your Account', edit_guest_path(@guest) %> </h3>
+<% end %>
 Bio: <%= @guest.bio %></br>
 Age: <%= @guest.age %> ||
 Gender: <%= @guest.gender %>
