@@ -1,8 +1,15 @@
 <h1>List of Rooms</h1>
 
 <% @rooms.each do |room| %>
-    <p>Room Number <%= link_to room.number, room %></p></br>
+    
+    <% if room.do_not_disturb == true && room.bookings.first.guest_id != current_user.id %>
+        <p>Room Number <%= room.number %></p></br>
+    <% else %>
+        <p>Room Number <%= link_to room.number, room %></p></br>
+    <% end %>
+
     <p>Do Not Disturb? <%= room.do_not_disturb %></p></br>
     <p> Note on Room Door: </p>
     <%= room.note %></br></br>
+
 <% end %>
