@@ -1,1 +1,21 @@
-<h1> Edit Guest </h1>
+<%= render partial: 'layouts/errors', locals: { object: @guest } %>
+
+<h1>Edit your account</h1>
+
+<%= form_for @guest do |f| %>
+
+    <%= f.label :age, "Age" %>
+    <%= f.text_field :age %></br>
+
+    <%= f.label :gender, "Gender" %></br>
+    <%= f.radio_button :gender, "Other" , checked: true %> Other <br />
+    <%= f.radio_button :gender, "Male" %> Male <br />
+    <%= f.radio_button :gender, "Female" %> Female <br />
+    <%= f.radio_button :gender, "Non-binary" %> Non-binary <br />
+
+    <%= f.label :bio, "Say something about yourself" %></br>
+    <%= f.text_field :bio %></br></br>
+
+    <%= f.submit "Edit Account" %>
+
+<% end %>
