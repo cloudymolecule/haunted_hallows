@@ -20,9 +20,15 @@ class BookingsController < ApplicationController
     end
 
     def update
+        if @booking.update(booking_params)
+            redirect_to booking_path(@booking)
+        else
+            render :new
+        end
     end
 
     def destroy
+        byebug
     end
 
     private
@@ -32,7 +38,7 @@ class BookingsController < ApplicationController
     end
 
     def booking_params
-        params.require(:booking).permit()
+        params.require(:booking).permit(:guest_id, :room_id, :name)
     end
 
 end
