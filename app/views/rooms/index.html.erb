@@ -8,7 +8,7 @@
         <p>Room Number <%= link_to room.number, room %></p></br>
     <% end %>
 
-    <p>Do Not Disturb? <%= room.do_not_disturb %></p></br>
+    <p> <%= dnd(room) %></p></br>
     <p> Note on Room Door: </p>
     <%= room.note %></br></br>
 
