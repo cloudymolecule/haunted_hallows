@@ -3,13 +3,12 @@
 <% @rooms.each do |room| %>
     
     <% if room.do_not_disturb == true && room.bookings.first.guest_id != current_user.id %>
-        <p>Room Number <%= room.number %></p></br>
+        <p>Room Number <%= room.number %></p>
     <% else %>
-        <p>Room Number <%= link_to room.number, room %></p></br>
+        <p>Room Number <%= link_to room.number, room %></p>
     <% end %>
 
-    <p> <%= dnd(room) %></p></br>
-    <p> Note on Room Door: </p>
-    <%= room.note %></br></br>
+    <p> <%= dnd(room) %></p>
+    <p> Note on Room Door: <%= room.note %></br></br></br>
 
 <% end %>
