@@ -28,7 +28,11 @@ class BookingsController < ApplicationController
     end
 
     def destroy
-        byebug
+        room = Room.find(@booking.room_id)
+        guest = Guest.find(@booking.guest_id)
+        room.destroy
+        @booking.destroy
+        redirect_to guest_path(guest)
     end
 
     private
