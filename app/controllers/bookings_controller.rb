@@ -30,11 +30,7 @@ class BookingsController < ApplicationController
     def destroy
         room = Room.find(@booking.room_id)
         board = Board.find(room.boards.first.id)
-        Comment.all.each do |c|
-            if c.board_id == board.id
-                c.destroy
-            end
-        end
+        Comment.destroy_comments(board)
         guest = Guest.find(@booking.guest_id)
         room.destroy
         board.destroy
