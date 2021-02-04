@@ -29,8 +29,15 @@ class BookingsController < ApplicationController
 
     def destroy
         room = Room.find(@booking.room_id)
+        board = Board.find(room.boards.first)
+        Comment.all.each do |c|
+            if c.board_id == board.id
+                c.destroy
+            end
+        end
         guest = Guest.find(@booking.guest_id)
         room.destroy
+        board.destroy
         @booking.destroy
         redirect_to guest_path(guest)
     end
