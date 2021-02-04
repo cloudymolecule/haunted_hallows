@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
     before_action :set_room, only: [:show, :edit, :update, :destroy]
-
+    
     def index
         @rooms = Room.ordered_by_number
     end
@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
     def create
         @room = Room.new(room_params)
         @room.bookings.first.guest_id = current_user.id
-        @room.number = room_number
+        @room.number = Room.room_number
         if @room.save
             @room.boards.first.room_id = @room.id
             @room.save
@@ -47,24 +47,5 @@ class RoomsController < ApplicationController
     def room_params
         params.require(:room).permit(:haunting, :note, :do_not_disturb, bookings_attributes: [:name], boards_attributes: [:title] )
     end
-
-    def room_number
-        number = 100
-        r_n = []
-        Room.all.each do |r|
-            if r.number != nil
-                r_n << r.number
-            end
-        end
-        r_n.sort!
-        r_n.each do |n|
-            if n != number
-                return number
-            else
-                number = number + 1
-            end
-        end
-    end
-    
 
 end
