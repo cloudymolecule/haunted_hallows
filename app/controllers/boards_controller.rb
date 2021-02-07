@@ -1,25 +1,7 @@
 class BoardsController < ApplicationController
-    before_action :set_board, only: [:show, :edit, :update, :destroy]
-
-    def index
-    end
+    before_action :set_board, only: [:show]
 
     def show
-    end
-
-    def new
-    end
-
-    def edit
-    end
-
-    def create
-    end
-
-    def update
-    end
-
-    def destroy
     end
 
     private
