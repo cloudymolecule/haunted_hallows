@@ -3,8 +3,11 @@ class CommentsController < ApplicationController
     skip_before_action :authorized, only: [:new, :create]
 
     def index
-        @guest = Guest.find(current_user.id)
-        @comments = Comment.by_guest(current_user.id)
+        if params[:board_id]
+            @board = Board.find(params[:board_id])
+        end
+            @guest = Guest.find(current_user.id)
+            @comments = Comment.by_guest(current_user.id)
     end
 
     def show
