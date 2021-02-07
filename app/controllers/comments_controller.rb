@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
     def destroy
         board = Board.find(@comment.board_id)
         @comment.destroy
-        redirect_to board_path(board)
+        redirect_to board_comments_path(board)
     end
 
     private
