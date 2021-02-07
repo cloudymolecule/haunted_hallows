@@ -1,32 +1,8 @@
 <% if @board %>
     <h1> All Comments on *<%= @board.title %>* board </h1></br></br>
     <%= link_to "Add a New Comment", new_board_comment_path(@board) %>
-    <ol>
-        <% @board.comments.each do |comment| %>
-            <li>
-                <h4> Comment: <%= comment.entry %> </h4>
-                Created at: <%= comment.created_at %> ||
-                Updated at: <%= comment.updated_at %></br>
-                <% if current_user.id == comment.guest_id %>
-                    <%= link_to "Edit Comment", edit_comment_path(comment) %> ||
-                    <%= link_to "Delete Comment", comment_path(comment), method: 'DELETE' %></br>
-                <% end %>
-            </li>
-        <% end %>
-    </ol>
+    <%= render partial: 'comments', collection: @comments %>
 <% else %>
     <h1> All Comments by <%= @guest.username %> </h1>
-    <ol>
-        <% @comments.each do |comment| %>
-            <li>
-                <h4> Comment: <%= comment.entry %> </h4>
-                Created at: <%= comment.created_at %> ||
-                Updated at: <%= comment.updated_at %></br>
-                <% if current_user.id == comment.guest_id %>
-                    <%= link_to "Edit Comment", edit_comment_path(comment) %> ||
-                    <%= link_to "Delete Comment", comment_path(comment), method: 'DELETE' %></br>
-                <% end %>
-            </li>
-        <% end %>
-    </ol>
+    <%= render partial: 'comments', collection: @comments %>
 <% end %>
