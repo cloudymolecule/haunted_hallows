@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         if @comment.save
             @board = Board.find(@comment.board_id)
-            redirect_to board_path(@board)
+            redirect_to board_comments_path(@board)
         else
             render :new
         end

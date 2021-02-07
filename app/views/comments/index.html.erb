@@ -1,5 +1,6 @@
 <% if @board %>
-    <h1> All Comments on *<%= @board.title %>* board </h1>
+    <h1> All Comments on *<%= @board.title %>* board </h1></br></br>
+    <%= link_to "Add a New Comment", new_board_comment_path(@board) %>
     <ol>
         <% @board.comments.each do |comment| %>
             <li>
