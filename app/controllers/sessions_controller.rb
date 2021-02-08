@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
         @guest = Guest.find_or_initialize_by(uid: auth['uid']) do |g|
             g.username = auth['info']['name']
             g.email = auth['info']['email']
+            g.password = SecureRandom.hex(12)
         end
         @guest.save(validate: false)
         session[:guest_id] = @guest.id
