@@ -24,14 +24,13 @@ class BookingsController < ApplicationController
     end
 
     def destroy
-        room = Room.find(@booking.room_id)
+        room = @booking.room
         board = Board.find(room.boards.first.id)
-        Comment.destroy_comments(board)
-        guest = Guest.find(@booking.guest_id)
+        guest = @booking.guest
         room.destroy
         board.destroy
         @booking.destroy
-        redirect_to guest_path(guest)
+        redirect_to guest_path(@booking.guest)
     end
 
     private

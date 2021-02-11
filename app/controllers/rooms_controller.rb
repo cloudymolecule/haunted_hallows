@@ -24,8 +24,8 @@ class RoomsController < ApplicationController
         @room.bookings.first.guest_id = current_user.id
         @room.number = Room.room_number
         if @room.save
-            @room.boards.first.room_id = @room.id
-            @room.save
+            # @room.boards.first.room_id = @room.id
+            # @room.save
             redirect_to room_path(@room)
         else
             render :new

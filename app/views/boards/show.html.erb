@@ -6,6 +6,7 @@
     <ol>
         <% @board.comments.each do |comment| %>
             <li>
+                Room board belongs to: <%= @board.room.number %>
                 Guest: <%= comment.guest_id %>    
                 <h4><%= comment.entry %> </h4>
                 Created at: <%= comment.created_at %> ||

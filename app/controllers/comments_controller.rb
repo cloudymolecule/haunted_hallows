@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     skip_before_action :authorized, only: [:new, :create]
 
     def index
-        @guest = Guest.find(current_user.id)
+        @guest = current_user
         if params[:board_id]
             @board = Board.find(params[:board_id])
             @comments = @board.comments
@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     end
 
     def new
+        #change to current user
         @comment = Comment.new(board_id: params[:board_id], guest_id: current_user.id)
     end
 
